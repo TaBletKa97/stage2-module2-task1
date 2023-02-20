@@ -1,6 +1,10 @@
 package com.example;
 
 public class Constants {
+
+    private Constants() {
+    }
+
     public static final String JSP_ADD_JSP = "/jsp/add.jsp";
     public static final String JSP_USERS_JSP = "/jsp/users.jsp";
 
