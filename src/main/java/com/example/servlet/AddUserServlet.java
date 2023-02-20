@@ -18,7 +18,7 @@ public class AddUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher(JSP_ADD_JSP).forward(req, resp);
+        req.getRequestDispatcher(JSP_ADD).forward(req, resp);
     }
 
     @Override
@@ -30,6 +30,6 @@ public class AddUserServlet extends HttpServlet {
         req.setAttribute(PARAM_USER, user);
         Warehouse warehouse = Warehouse.getInstance();
         warehouse.addUser(user);
-        getServletContext().getRequestDispatcher(JSP_ADD_JSP).forward(req, resp);
+        req.getRequestDispatcher(JSP_ADD).forward(req, resp);
     }
 }

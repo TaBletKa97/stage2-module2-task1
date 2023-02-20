@@ -3,7 +3,6 @@ package com.example.servlet;
 import com.example.User;
 import com.example.Warehouse;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +21,6 @@ public class GetUsersServlet extends HttpServlet {
             throws ServletException, IOException {
         Set<User> userSet = Warehouse.getInstance().getUsers();
         req.setAttribute(PARAM_USERS, userSet);
-        req.getRequestDispatcher(JSP_USERS_JSP).forward(req, resp);
+        req.getRequestDispatcher(JSP_USERS).forward(req, resp);
     }
 }
