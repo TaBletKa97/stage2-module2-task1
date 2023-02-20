@@ -17,10 +17,15 @@ import static com.example.Constants.*;
 public class GetUsersServlet extends HttpServlet {
 
     @Override
+    public void init() throws ServletException {
+        Set<User> userSet = Warehouse.getInstance().getUsers();
+        getServletContext().setAttribute(PARAM_USERS, userSet);
+    }
+
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        Set<User> userSet = Warehouse.getInstance().getUsers();
-        req.setAttribute(PARAM_USERS, userSet);
+        req.setAttribute(PARAM_USERS, getServletContext().getAttribute(PARAM_USERS));
         getServletContext().getRequestDispatcher(JSP_USERS_JSP).forward(req, resp);
     }
 }
