@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.example.Constants.*;
+//import static com.example.Constants.*;
 
 @WebServlet("/add")
 public class AddUserServlet extends HttpServlet {
@@ -18,18 +18,18 @@ public class AddUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher(JSP_ADD).forward(req, resp);
+        req.getRequestDispatcher("/jsp/add.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String firstName = req.getParameter(PARAM_FIRST_NAME);
-        String lastName = req.getParameter(PARAM_LAST_NAME);
+        String firstName = req.getParameter("firstName");
+        String lastName = req.getParameter("lastName");
         User user = new User(firstName, lastName);
-        req.setAttribute(PARAM_USER, user);
+        req.setAttribute("user", user);
         Warehouse warehouse = Warehouse.getInstance();
         warehouse.addUser(user);
-        req.getRequestDispatcher(JSP_ADD).forward(req, resp);
+        req.getRequestDispatcher("/jsp/add.jsp").forward(req, resp);
     }
 }
